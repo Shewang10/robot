@@ -1,0 +1,34 @@
+*** Settings ***
+Library           SeleniumLibrary
+
+*** Variables ***
+${url}            https://www.facebook.com
+@{credential}     shewang_babbar@yahoo.com    @Sarla10#
+
+*** Test Cases ***
+Facebook Simple Login
+    Open Browser    https://www.facebook.com    chrome
+    Input Text    id=email    shewang_babbar@yahoo.com
+    Input Password    id=pass    @Sarla10#
+    Click Button    id=u_0_2
+    Close Browser
+    Log To Console    Facebook login test case Scussessfully completes
+
+Facebook login by using variables
+    Open Browser    ${url}    chrome
+    Input Text    id=email    @{credential}[0]
+    Input Password    id=pass    @{credential}[1]
+    Click Button    id=u_0_2
+    Close Browser
+    Log To Console    Facebook login test case Scussessfully completes
+
+Test3
+    Open Browser    https://www.facebook.com    chrome
+    Login
+    Close Browser
+
+*** Keywords ***
+Login
+    Input Text    id=email    shewang_babbar@yahoo.com
+    Input Password    id=pass    @Sarla10#
+    Click Button    id=u_0_2
